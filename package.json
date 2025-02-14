@@ -12,5 +12,9 @@
 		"@cloudflare/vitest-pool-workers": "^0.6.4",
 		"vitest": "~2.1.9",
 		"wrangler": "^3.108.1"
+	},
+	"dependencies": {
+		"bcrypt": "^5.1.1",
+		"jsonwebtoken": "^9.0.2"
 	}
 }
