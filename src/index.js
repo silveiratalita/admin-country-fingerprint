@@ -1,5 +1,5 @@
 const corsHeaders = {
-	'Access-Control-Allow-Origin': '*', // Change to your frontend origin if necessary
+	'Access-Control-Allow-Origin': '*', 
 	'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
 	'Access-Control-Allow-Headers': 'Content-Type, Authorization',
 };
@@ -15,7 +15,6 @@ function handleOptions(request) {
 			headers: corsHeaders,
 		});
 	} else {
-		// Not a CORS preflight request
 		return new Response(null, {
 			headers: { Allow: 'GET, HEAD, POST, OPTIONS' },
 		});
@@ -45,7 +44,7 @@ export default {
 					return await handleRegister(request, env);
 				case '/dashboard':
 					return await handleDashboard(request, env);
-				case '/api/acessos': // Nova rota para pegar dados da tabela acessos
+				case '/api/acessos': 
 					return await handleAcessos(request, env);
 				default:
 					return createResponse({ error: 'Rota não encontrada' }, 404);
@@ -65,12 +64,12 @@ async function handleRegister(request, env) {
 		await env.DB.prepare('INSERT INTO auth (email, pass) VALUES (?, ?)').bind(email, encodedPassword).run();
 		return new Response(JSON.stringify({ message: 'Registro bem-sucedido' }), {
 			status: 200,
-			headers: corsHeaders, // Ensure CORS headers are included
+			headers: corsHeaders, 
 		});
 	} catch (error) {
 		return new Response(JSON.stringify({ error: 'Erro no registro: ' + error.message }), {
 			status: 500,
-			headers: corsHeaders, // Ensure CORS headers are included
+			headers: corsHeaders, 
 		});
 	}
 }
